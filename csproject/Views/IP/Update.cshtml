@@ -1,0 +1,46 @@
+@model IP
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>IP edit</h2>
+
+<input type="text" id="updateText" asp-for="Subnet">
+<button type="submit" id="update">Update</button>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(() => {
+            $('#update').on('click', () => {
+                let id = @Html.Raw(Json.Serialize(Model.Id));
+                let subnet = $("#updateText").val();
+                $.ajax({
+                    type: "POST",
+                    url: "/IP/UpdateIP",
+                    data: {
+                        id,
+                        subnet,
+                    },
+                    dataType: "json",
+                    success: (res) => {
+                        if (res.error) {
+                            alert(res.message)
+                        } else {
+                            window.location.href = `/IP`;
+                        }
+                    },
+                    error: (d) => {
+                        console.log(d);
+                        alert("Error while editing");
+                    }
+                })
+            })
+        })
+    </script>
+}

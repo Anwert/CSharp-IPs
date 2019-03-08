@@ -1,0 +1,42 @@
+@{
+    ViewBag.Title = "IP List";
+}
+
+@section Links
+{
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css" />
+}
+
+<div><b>IP table</b><br /></div>
+
+<div>
+    <table class="display" id="tblIP">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>IP Address</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<input type="text" id="createText">
+<button type="submit" id="create">Create</button>
+
+<br/>
+<br/>
+
+<div>
+    <button id="groupIPs">Group IPs</button>
+</div>
+
+<br/>
+
+<div id="groupedIPsTableContainer"></div>
+
+@section Scripts
+{
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="~/js/site.js"></script>
+}
